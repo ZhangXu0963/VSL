@@ -1,0 +1,10 @@
+Loading dataset
+=> loaded checkpoint_epoch 23
+Computing results...
+Images: 5000, Captions: 25000
+calculate similarity time: 3.1047489643096924
+rsum: 437.2
+Average i2t Recall: 79.7
+Image to text: 60.2 86.6 92.5 1.0 4.1
+Average t2i Recall: 66.0
+Text to image: 43.3 72.2 82.5 2.0 14.3
