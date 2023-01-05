@@ -1,5 +1,5 @@
 # 2023ICME-VSL
-code: The code of our method.
+code: The code of VSL(our method) .
 
 SGR+VSL: The experiment results of VSL work on SGR.
 
