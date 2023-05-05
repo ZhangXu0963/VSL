@@ -1,4 +1,4 @@
-# SGRAF+VSL
+# Visual Semantic Loss (VSL)
 *The code for ICME2023 paper of **“Image-text Retrieval via preserving main Semantics of Vision”**[[pdf]](https://arxiv.org/pdf/2304.10254.pdf).* 
 
 *We proposed a semantical alignment strategy **Visual Semantic Loss(VSL)** for image-text retrieval. And we verify the effectiveness on top of two models proposed in [SGRAF](https://github.com/Paranioar/SGRAF).*
