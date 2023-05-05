@@ -349,7 +349,7 @@ class EncoderSimilarity(nn.Module):
 
         self.init_weights()
 
-    def forward(self, img_emb, cap_emb, cap_lens): #稍微慢一些
+    def forward(self, img_emb, cap_emb, cap_lens): 
         sim_all = []
         n_image = img_emb.size(0)
         n_caption = cap_emb.size(0)
@@ -369,12 +369,12 @@ class EncoderSimilarity(nn.Module):
             cap_glo_i = self.t_global_w(cap_i, cap_ave_i) #TextSA: global embedding
 
             # local-global alignment construction
-            Context_img = SCAN_attention(cap_i_expand, img_emb, smooth=9.0) #testual-to-visual attention来获取每个region和每个word之间的attention weight. Eq(3)
-            sim_loc = torch.pow(torch.sub(Context_img, cap_i_expand), 2) #pow: 逐元素求指数, sub: 减
-            sim_loc = l2norm(self.sim_tranloc_w(sim_loc), dim=-1) #Eq(2)的weight, local部分
+            Context_img = SCAN_attention(cap_i_expand, img_emb, smooth=9.0) 
+            sim_loc = torch.pow(torch.sub(Context_img, cap_i_expand), 2) 
+            sim_loc = l2norm(self.sim_tranloc_w(sim_loc), dim=-1) 
 
-            sim_glo = torch.pow(torch.sub(img_glo, cap_glo_i), 2) #Eq(2), cap_glo_i是cap_i作为query的caption的自注意力输出的caption embedding
-            sim_glo = l2norm(self.sim_tranglo_w(sim_glo), dim=-1) #Eq(2)的weight, global部分
+            sim_glo = torch.pow(torch.sub(img_glo, cap_glo_i), 2) 
+            sim_glo = l2norm(self.sim_tranglo_w(sim_glo), dim=-1) 
 
             # concat the global and local alignments
             sim_emb = torch.cat([sim_glo.unsqueeze(1), sim_loc], 1)
@@ -413,17 +413,17 @@ def SCAN_attention(query, context, smooth, eps=1e-8):
     context: (n_context, sourceL, d)
     """
     # --> (batch, d, queryL)
-    queryT = torch.transpose(query, 1, 2) #torch.transpose转置
+    queryT = torch.transpose(query, 1, 2) 
 
     # (batch, sourceL, d)(batch, d, queryL)
     # --> (batch, sourceL, queryL)
-    attn = torch.bmm(context, queryT) #bmm 矩阵乘法
+    attn = torch.bmm(context, queryT) 
 
-    attn = nn.LeakyReLU(0.1)(attn) #ReLu激活函数，保留一点点负半轴斜率
+    attn = nn.LeakyReLU(0.1)(attn) 
     attn = l2norm(attn, 2)
 
     # --> (batch, queryL, sourceL)
-    attn = torch.transpose(attn, 1, 2).contiguous() #contiguous 转置之后的矩阵与原矩阵有依赖关系，使用contiguous强制拷贝另存一个新的矩阵，这样与原矩阵没有依赖关系
+    attn = torch.transpose(attn, 1, 2).contiguous() 
     # --> (batch, queryL, sourceL
     attn = F.softmax(attn*smooth, dim=2)
 
@@ -628,7 +628,7 @@ class SGRAF(object):
 
         # compute the embeddings
         img_embs, cap_embs, cap_lens = self.forward_emb(images, captions, lengths)# [128, 36, 1024], [128, 23, 1024], [128]
-        sims = self.forward_sim(img_embs, cap_embs, cap_lens) #regions-words similarity matrix 相似度矩阵[128, 128]
+        sims = self.forward_sim(img_embs, cap_embs, cap_lens) 
         #compute CIDErs
         image_cider = self.cider_com.cider_for_image(tfidf_for_image)
         caption_cider = self.cider_com.cider_for_caption(tfidf_for_caption)

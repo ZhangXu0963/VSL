@@ -48,7 +48,7 @@ class PrecompDataset(data.Dataset):
         tfidf = transformer.fit_transform(X).toarray()
         return tfidf
 
-    def __getitem__(self, index): #index: caption的编号
+    def __getitem__(self, index):
         # handle the image redundancy
         img_id = index//self.im_div
         image = torch.Tensor(self.images[img_id]) #torch.Size([36, 2048])
