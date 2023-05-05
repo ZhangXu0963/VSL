@@ -1,0 +1,1 @@
+The folder used to store the Tensorboard log files during training.
