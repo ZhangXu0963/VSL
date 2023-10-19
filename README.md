@@ -127,15 +127,14 @@ If Visual Semantic Loss(VSL) is useful for you, please cite the following paper.
 
 Since ICME2023 has published the paper, please cite this official version of the paper. 
 
-@INPROCEEDINGS{10219570,
-  author={Zhang, Xu and Niu, Xinzheng and Fournier-Viger, Philippe and Dai, Xudong},
+@inproceedings{10219570, 
+  author={Zhang, Xu and Niu, Xinzheng and Fournier-Viger, Philippe and Dai, Xudong}, 
   booktitle={2023 IEEE International Conference on Multimedia and Expo (ICME)}, 
-  title={Image-text Retrieval via Preserving Main Semantics of Vision}, 
-  year={2023},
-  volume={},
-  number={},
-  pages={1967-1972},
-  doi={10.1109/ICME55011.2023.00337}}
+  title={Image-text Retrieval via Preserving Main Semantics of Vision},  
+  year={2023},  
+  pages={1967-1972}, 
+  doi={10.1109/ICME55011.2023.00337}
+} 
 
   
 
