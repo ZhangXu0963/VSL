@@ -14,7 +14,7 @@
 
 <table>
    <tr> <td rowspan="2">Dataset</td> <td rowspan="2", align="center">Method</td> 
-        <td colspan="4", align="center">Image to Text</td> <td colspan="4", align="center">Text to Image</td> </tr>
+        <td colspan="3", align="center">Image to Text</td> <td colspan="3", align="center">Text to Image</td> </tr>
    <tr> <td>R@1</td><td>R@5</td><td>R@10</td> <td>R@1</td><td>R@5</td><td>R@10</td> </tr>
    <tr> <td rowspan="3">MSCOCO1K</td>
         <td>SGR+VSL</td> <td>78.5</td><td>96.2</td><td>98.6</td> <td>63.0</td><td>89.9</td><td>95.3</td> </tr>
